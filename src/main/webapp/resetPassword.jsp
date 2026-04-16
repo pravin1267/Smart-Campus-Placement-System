@@ -32,7 +32,7 @@
         <div class="error-msg">${messege}</div>
         <% } %>
 
-        <form action="./newPasswordServlet" method="post">
+        <form action="./resetPassword" method="post">
             <div class="portal-form-group">
                 <label class="portal-label" for="new-pass">New Password</label>
                 <input type="password" id="new-pass" class="portal-input" name="password" placeholder="Enter new password" required autocomplete="new-password">
@@ -44,6 +44,9 @@
             <button type="submit" class="auth-submit" id="reset-pass-btn">Reset Password</button>
         </form>
     </div>
+</div>
+<div class="auth-footer">
+    &copy; 2026 Smart Campus Placement System. All rights reserved.
 </div>
 </body>
 </html>

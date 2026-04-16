@@ -142,4 +142,20 @@ public class RecruiterDAO {
 		}
 	}
 
+	public boolean updateRecruiterProfile(int recruiterId, String hrName, String companyName, String email, String phone) {
+		String sql = "UPDATE recruiters SET hr_name=?, company_name=?, email=?, phone=? WHERE recruiter_id=?";
+		try (Connection con = DBConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
+			ps.setString(1, hrName);
+			ps.setString(2, companyName);
+			ps.setString(3, email);
+			ps.setString(4, phone);
+			ps.setInt(5, recruiterId);
+			int rows = ps.executeUpdate();
+			return rows > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

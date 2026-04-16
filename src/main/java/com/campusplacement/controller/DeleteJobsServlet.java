@@ -14,9 +14,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class DeleteJobsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JobDAO jobDAO = new JobDAO();
-		
+		try {
+			int jobId = Integer.parseInt(request.getParameter("jobId"));
+			jobDAO.deleteJob(jobId);
+			request.getSession().setAttribute("successMsg", "Job deleted successfully.");
+		} catch (Exception e) {
+			request.getSession().setAttribute("errorMsg", "Failed to delete job. Please try again.");
+			e.printStackTrace();
+		}
+		response.sendRedirect("Recruiters-Dashboard.jsp");
 	}
 
 }

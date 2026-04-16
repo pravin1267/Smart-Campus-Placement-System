@@ -68,6 +68,22 @@ String companyInitial = recruiter.getCompanyName().substring(0,1).toUpperCase();
                     <h3>Create Job Posting</h3>
                     <p>Fill in all the details to attract the best candidates from campus.</p>
                 </div>
+                
+                <% 
+                   String successMsg = (String) session.getAttribute("successMsg");
+                   String errorMsg = (String) session.getAttribute("errorMsg");
+                   if (successMsg != null) { 
+                %>
+                <div style="background:#dcfce7;color:#15803d;padding:12px;border-radius:6px;margin-bottom:20px;border:1px solid #bbf7d0;">
+                   <%= successMsg %>
+                </div>
+                <% session.removeAttribute("successMsg"); } 
+                   if (errorMsg != null) { 
+                %>
+                <div style="background:#fee2e2;color:#b91c1c;padding:12px;border-radius:6px;margin-bottom:20px;border:1px solid #fecaca;">
+                   <%= errorMsg %>
+                </div>
+                <% session.removeAttribute("errorMsg"); } %>
 
                 <div class="content-card">
                     <div class="content-card-body">

@@ -35,11 +35,12 @@ public class postJobServlet extends HttpServlet {
         JobDAO jobDAO = new JobDAO();
         
        if(jobDAO.addJobs(job)) {
-    	   System.out.println("Job added successfully !!!");
+    	   request.getSession().setAttribute("successMsg", "Job posted successfully!");
        }
        else {
-    	   System.out.println("There is problem while adding the job");
+    	   request.getSession().setAttribute("errorMsg", "Failed to post job. Please try again.");
        }
+       response.sendRedirect("postJob.jsp");
 	}
 
 }

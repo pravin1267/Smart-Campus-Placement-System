@@ -40,7 +40,7 @@
         <div class="error-msg">${messege}</div>
         <% } %>
 
-        <form action="./verify_otp" method="post">
+        <form action="./verify" method="post">
             <div class="portal-form-group">
                 <label class="portal-label" style="text-align:center;display:block;">6-Digit OTP Code</label>
                 <input type="text" id="otp-input" name="otp" class="portal-input otp-input" maxlength="6" placeholder="••••••" required autocomplete="one-time-code">
@@ -53,6 +53,9 @@
             <a href="forgot-password.jsp" style="font-weight:600;color:#5EB1BF;margin-left:4px;">Resend OTP</a>
         </div>
     </div>
+</div>
+<div class="auth-footer">
+    &copy; 2026 Smart Campus Placement System. All rights reserved.
 </div>
 </body>
 </html>

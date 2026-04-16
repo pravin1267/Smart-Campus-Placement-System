@@ -18,8 +18,8 @@ public class resetPasswordServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String newPassword = request.getParameter("newPassword");
-		String password = request.getParameter("password");
+		String newPassword = request.getParameter("password");
+		String password = request.getParameter("confPassword");
 		System.out.println("i am in the resetpassword Servelet");
 		System.out.println("The new passward is : "+newPassword);
         System.out.println("The old passwod is : "+password);

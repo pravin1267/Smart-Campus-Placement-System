@@ -158,6 +158,10 @@ int totalJobs = jobDAO.getJobCount();
                 </div>
             </div>
         </div>
+        
+        <footer class="portal-footer">
+            &copy; 2026 Smart Campus Placement System. All rights reserved.
+        </footer>
     </div>
 </div>
 </body>

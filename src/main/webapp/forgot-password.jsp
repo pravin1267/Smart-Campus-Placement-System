@@ -55,5 +55,8 @@
         </div>
     </div>
 </div>
+<div class="auth-footer">
+    &copy; 2026 Smart Campus Placement System. All rights reserved.
+</div>
 </body>
 </html>

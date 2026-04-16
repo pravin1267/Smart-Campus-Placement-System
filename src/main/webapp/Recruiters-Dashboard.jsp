@@ -67,6 +67,63 @@ String companyInitial = recruiter.getCompanyName().substring(0,1).toUpperCase();
                 <h3>Welcome, <%= recruiter.getHrName() %> 👋</h3>
                 <p>Manage your job postings and track applicants from <%= recruiter.getCompanyName() %>.</p>
             </div>
+            
+            <% 
+               String successMsg = (String) session.getAttribute("successMsg");
+               String errorMsg = (String) session.getAttribute("errorMsg");
+               if (successMsg != null) { 
+            %>
+            <div style="background:#dcfce7;color:#15803d;padding:12px;border-radius:6px;margin-bottom:20px;border:1px solid #bbf7d0;">
+               <%= successMsg %>
+            </div>
+            <% session.removeAttribute("successMsg"); } 
+               if (errorMsg != null) { 
+            %>
+            <div style="background:#fee2e2;color:#b91c1c;padding:12px;border-radius:6px;margin-bottom:20px;border:1px solid #fecaca;">
+               <%= errorMsg %>
+            </div>
+            <% session.removeAttribute("errorMsg"); } %>
+
+            <!-- Recruiter Profile Section -->
+            <div class="content-card" style="margin-bottom: 28px;">
+                <div class="content-card-header">
+                    <h4>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                        Recruiter Profile
+                    </h4>
+                    <button class="btn-portal btn-portal-outline btn-portal-sm" onclick="document.getElementById('editProfileModal').style.display='flex'">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg>
+                        Edit Profile
+                    </button>
+                </div>
+                <div class="content-card-body">
+                    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+                        <div class="profile-avatar-placeholder" style="width:72px;height:72px;font-size:1.6rem;">
+                            <%= companyInitial %>
+                        </div>
+                        <div style="flex:1;min-width:260px;">
+                            <div class="info-row" style="padding: 8px 0;">
+                                <div class="info-label" style="min-width:100px;">HR Name</div>
+                                <div class="info-value"><%= recruiter.getHrName() %></div>
+                            </div>
+                            <div class="info-row" style="padding: 8px 0;">
+                                <div class="info-label" style="min-width:100px;">Company</div>
+                                <div class="info-value"><%= recruiter.getCompanyName() %></div>
+                            </div>
+                        </div>
+                        <div style="flex:1;min-width:260px;">
+                            <div class="info-row" style="padding: 8px 0;">
+                                <div class="info-label" style="min-width:100px;">Email</div>
+                                <div class="info-value"><%= recruiter.getEmail() %></div>
+                            </div>
+                            <div class="info-row" style="padding: 8px 0;">
+                                <div class="info-label" style="min-width:100px;">Contact</div>
+                                <div class="info-value"><%= recruiter.getPhone() != null ? recruiter.getPhone() : "Not Provided" %></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Stats -->
             <div class="stats-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));">
@@ -122,35 +179,34 @@ String companyInitial = recruiter.getCompanyName().substring(0,1).toUpperCase();
                 </div>
                 <% } else { %>
                 <div class="content-card-body">
-                    <div class="items-grid">
+                    <div style="display:flex;flex-direction:column;gap:12px;">
                         <% for(Job job : jobs) { %>
-                        <div class="item-card">
-                            <form action="deleteJobs" method="post">
+                        <div class="item-card" style="padding: 16px 22px;">
+                            <form action="deleteJobs" method="post" style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
                                 <input type="hidden" name="jobId" value="<%= job.getJobId() %>">
-                                <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
-                                    <div>
-                                        <div class="item-title"><%= job.getDescription() %></div>
-                                        <div class="item-company">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15" /></svg>
-                                            <%= recruiter.getCompanyName() %>
-                                        </div>
+                                
+                                <div style="flex:1;min-width:250px;">
+                                    <div class="item-title" style="margin-bottom:4px;font-size:1.1rem;"><%= job.getDescription() %></div>
+                                    <div class="item-company" style="margin-bottom:8px;font-size:0.9rem;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15" /></svg>
+                                        <%= recruiter.getCompanyName() %>
                                     </div>
-                                    <span class="badge-pill badge-teal">Min CGPA: <%= job.getMinCgpa() %></span>
+                                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                                        <% if(job.getRequiredSkills() != null) {
+                                               String[] skills = job.getRequiredSkills().split(",");
+                                               for(String sk : skills) { %>
+                                        <span class="badge-pill badge-info" style="font-size:0.7rem;"><%= sk.trim() %></span>
+                                        <% } } %>
+                                    </div>
                                 </div>
-                                <div style="margin-bottom:10px;">
-                                    <% if(job.getRequiredSkills() != null) {
-                                           String[] skills = job.getRequiredSkills().split(",");
-                                           for(String sk : skills) { %>
-                                    <span class="badge-pill badge-info" style="margin-right:4px;margin-bottom:3px;font-size:0.7rem;"><%= sk.trim() %></span>
-                                    <% } } %>
-                                </div>
-                                <div class="item-meta">
-                                    <span style="color:#dc2626;font-size:0.78rem;">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                                        Deadline: <%= job.getLastDate() %>
+                                
+                                <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-width:140px;">
+                                    <span class="badge-pill badge-teal" style="background:#e0f2fe;color:#0369a1;padding:6px 14px;">Min CGPA: <%= job.getMinCgpa() %></span>
+                                    <span style="color:#dc2626;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:4px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                                        <%= job.getLastDate() %>
                                     </span>
-                                    <button type="submit" class="btn-portal btn-portal-danger btn-portal-sm" style="margin-left:auto;"
-                                            onclick="return confirm('Delete this job posting?')">
+                                    <button type="submit" class="btn-portal btn-portal-danger btn-portal-sm" onclick="return confirm('Delete this job posting?')" style="margin-top:4px;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" /></svg>
                                         Delete
                                     </button>
@@ -163,7 +219,41 @@ String companyInitial = recruiter.getCompanyName().substring(0,1).toUpperCase();
                 <% } %>
             </div>
         </div>
+        <footer class="portal-footer">
+            &copy; 2026 Smart Campus Placement System. All rights reserved.
+        </footer>
     </div>
 </div>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,42,43,0.5);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+    <div class="auth-card" style="max-width:500px;width:100%;position:relative;padding:32px;">
+        <button onclick="document.getElementById('editProfileModal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:var(--text-muted);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+        </button>
+        <h3 style="margin-bottom:20px;font-size:1.3rem;">Edit Recruiter Profile</h3>
+        <form action="UpdateRecruiterProfileServlet" method="post">
+            <input type="hidden" name="recruiterId" value="<%= recruiter.getRecruiterId() %>">
+            <div class="portal-form-group">
+                <label class="portal-label">HR Name</label>
+                <input type="text" name="hrName" class="portal-input" value="<%= recruiter.getHrName() %>" required>
+            </div>
+            <div class="portal-form-group">
+                <label class="portal-label">Company Name</label>
+                <input type="text" name="companyName" class="portal-input" value="<%= recruiter.getCompanyName() %>" required>
+            </div>
+            <div class="portal-form-group">
+                <label class="portal-label">Email</label>
+                <input type="email" name="email" class="portal-input" value="<%= recruiter.getEmail() %>" required>
+            </div>
+            <div class="portal-form-group">
+                <label class="portal-label">Contact Number</label>
+                <input type="text" name="phone" class="portal-input" value="<%= recruiter.getPhone() != null ? recruiter.getPhone() : "" %>" required>
+            </div>
+            <button type="submit" class="btn-portal btn-portal-primary" style="width:100%;justify-content:center;margin-top:10px;">Save Changes</button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>
