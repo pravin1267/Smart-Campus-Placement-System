@@ -17,6 +17,9 @@ public class DBConnection {
 	public static Connection getConnection() {
 		try {
 			return DriverManager.getConnection(URL, USER, PWD);
+             System.out.println("JDBC URL: " + URL);
+	        System.out.println("USER: " + USER);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
