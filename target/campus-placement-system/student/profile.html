@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Smart Campus</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand">
+                    <span class="brand-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </span>
+                    <span>Smart Campus</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item animate-slide-in stagger-1">
+                    <span class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                    </span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="jobs.html" class="nav-item animate-slide-in stagger-2">
+                    <span class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </span>
+                    <span>Browse Jobs</span>
+                </a>
+                <a href="applications.html" class="nav-item animate-slide-in stagger-3">
+                    <span class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </span>
+                    <span>My Applications</span>
+                </a>
+                <a href="interviews.html" class="nav-item animate-slide-in stagger-4">
+                    <span class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </span>
+                    <span>Interviews</span>
+                </a>
+                <a href="profile.html" class="nav-item active animate-slide-in stagger-4">
+                    <span class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </span>
+                    <span>Profile</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn" class="nav-item text-error" style="color: var(--error);">
+                    <span class="nav-icon" style="color: var(--error);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    </span>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="mobile-toggle" id="mobile-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <h2 class="page-title">My Profile</h2>
+                </div>
+                
+                <div class="topbar-right">
+                    <div class="user-profile">
+                        <div class="user-info" style="text-align: right;">
+                            <span class="user-name" id="user-name">Loading...</span>
+                            <span class="user-role" id="user-role">Student</span>
+                        </div>
+                        <div class="avatar" id="user-initial">?</div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content-area">
+                
+                <div class="grid grid-cols-2 gap-6" style="grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start;">
+                    
+                    <!-- Left: Basic Info & Resume -->
+                    <div class="flex flex-col gap-6">
+                        <div class="card animate-fade-in stagger-1 text-center">
+                            <div class="avatar mb-4" style="width: 100px; height: 100px; font-size: 2.5rem; margin: 0 auto;" id="profile-avatar">S</div>
+                            <h3 class="mb-2 text-primary" style="font-size: 1.25rem; font-weight: 700;" id="profile-name">Student Name</h3>
+                            <p class="text-secondary mb-4" style="font-size: 0.875rem;" id="profile-email">student@university.edu</p>
+                            <span class="badge success">Actively Looking</span>
+                        </div>
+
+                        <div class="card animate-fade-in stagger-2">
+                            <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;" class="text-primary">Resume Document</h3>
+                            
+                            <form id="resumeForm">
+                                <div style="background: var(--bg-surface-light); border: 1px dashed var(--secondary); padding: 1.5rem; text-align: center; border-radius: var(--radius-lg); margin-bottom: 1rem;">
+                                    <div style="color: var(--secondary); margin-bottom: 0.5rem;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                    </div>
+                                    <p class="text-secondary mb-4" style="font-size: 0.875rem;">Upload PDF only. Max 5MB.</p>
+                                    <input type="file" id="resumeFile" accept=".pdf" style="display:none;" />
+                                    <label for="resumeFile" class="btn btn-outline btn-sm">Select File</label>
+                                    <div id="fileName" class="text-primary mt-2" style="font-size: 0.75rem;"></div>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-full text-center">Upload Resume</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Right: Detailed Profile Form -->
+                    <div class="card animate-fade-in stagger-3">
+                        <h3 class="text-primary mb-6" style="font-size: 1.25rem; font-weight: 700;">Profile Details</h3>
+                        <form id="profileForm">
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label>Phone Number</label>
+                                    <input type="text" id="p_phone" placeholder="+91 9876543210" />
+                                </div>
+                                <div>
+                                    <label>CGPA</label>
+                                    <input type="number" step="0.01" id="p_cgpa" placeholder="8.5" />
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label>Branch / Major</label>
+                                    <input type="text" id="p_branch" placeholder="Computer Science" />
+                                </div>
+                                <div>
+                                    <label>Graduation Year</label>
+                                    <input type="number" id="p_year" placeholder="2025" />
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label>Key Skills (comma separated)</label>
+                                <input type="text" id="p_skills" placeholder="Java, Python, React, SQL" />
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/student.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            document.getElementById('profile-name').textContent = user.name || 'Student Name';
+            document.getElementById('profile-email').textContent = user.email || 'email@example.com';
+            document.getElementById('profile-avatar').textContent = (user.name || user.email || 'S').charAt(0).toUpperCase();
+
+            // Resume flow simple mock
+            const fileInput = document.getElementById('resumeFile');
+            fileInput.addEventListener('change', (e) => {
+                if(e.target.files.length > 0) {
+                    document.getElementById('fileName').textContent = e.target.files[0].name;
+                }
+            });
+
+            document.getElementById('resumeForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if(fileInput.files.length === 0) {
+                    Utils.showToast("Please select a file first", 'warning');
+                    return;
+                }
+                const formData = new FormData();
+                formData.append('resume', fileInput.files[0]);
+                formData.append('studentId', user.id || 1);
+                
+                try {
+                    await API.Student.uploadResume(formData);
+                    Utils.showToast("Resume uploaded successfully!", 'success');
+                } catch(err) {
+                    Utils.showToast(err.message, 'error');
+                }
+            });
+
+            document.getElementById('profileForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const payload = {
+                    studentId: user.id || 1,
+                    phone: document.getElementById('p_phone').value,
+                    cgpa: document.getElementById('p_cgpa').value,
+                    branch: document.getElementById('p_branch').value,
+                    year: document.getElementById('p_year').value,
+                    skills: document.getElementById('p_skills').value
+                };
+
+                try {
+                    await API.Student.updateProfile(payload);
+                    Utils.showToast("Profile details updated!", 'success');
+                } catch(err) {
+                    Utils.showToast(err.message, 'error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
