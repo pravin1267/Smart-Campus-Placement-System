@@ -23,6 +23,9 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		UserDAO userDAO = new UserDAO();
 	    User user = userDAO.login(name, password);
+
+		System.out.println("Login servlet called");
+		
         String msg = "";    
 	        if (user == null) {
 	           msg ="<div class=\"alert alert-danger\" role=\"alert\">\r\n"
