@@ -5,20 +5,18 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-    private static final String URL =
-        "jdbc:mysql://" + System.getenv("MYSQLHOST") + ":" +
-        System.getenv("MYSQLPORT") + "/" +
-        System.getenv("MYSQLDATABASE");
+	private static final String URL = "jdbc:mysql://interchange.proxy.rlwy.net:36473/railway"
+			+ "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
-    private static final String USER = System.getenv("MYSQLUSER");
-    private static final String PWD = System.getenv("MYSQLPASSWORD");
+	private static final String USER = "root";
+	private static final String PWD = "xlotvwnlkYwCxkZyJYomlkFMiFPUMxqS";
 
-    public static Connection getConnection() {
-        try {
-            return DriverManager.getConnection(URL, USER, PWD);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+	public static Connection getConnection() {
+		try {
+			return DriverManager.getConnection(URL, USER, PWD);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

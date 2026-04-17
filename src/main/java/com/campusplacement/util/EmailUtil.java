@@ -33,7 +33,7 @@ public class EmailUtil {
 
             MimeMessage message = new MimeMessage(session);
 
-            message.setFrom(new InternetAddress(fromEmail));
+            message.setFrom(new InternetAddress(fromEmail, "Campus Placement System"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
             
             message.setSubject("Campus Placement System OTP");
