@@ -4,51 +4,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-	public static Connection getConnection() {
-	    try {
-	        String url = "jdbc:mysql://" 
-	            + System.getenv("MYSQLHOST") + ":" 
-	            + System.getenv("MYSQLPORT") + "/" 
-	            + System.getenv("MYSQLDATABASE") 
-	            + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
-<<<<<<< HEAD
     public static Connection getConnection() {
         try {
-            // Load JDBC Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Get values from environment variables
-            String URL = "jdbc:mysql://" 
-                + System.getenv("MYSQLHOST") + ":" 
-                + System.getenv("MYSQLPORT") + "/" 
-                + System.getenv("MYSQLDATABASE") 
-                + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+            String host = System.getenv("MYSQLHOST");
+            String port = System.getenv("MYSQLPORT");
+            String db   = System.getenv("MYSQLDATABASE");
+            String user = System.getenv("MYSQLUSER");
+            String pwd  = System.getenv("MYSQLPASSWORD");
 
-            String USER = System.getenv("MYSQLUSER");
-            String PWD  = System.getenv("MYSQLPASSWORD");
+            // ✅ Add this null check
+            if (host == null || port == null || db == null || user == null || pwd == null) {
+                System.out.println("❌ ERROR: One or more env variables are NULL!");
+                System.out.println("MYSQLHOST=" + host);
+                System.out.println("MYSQLPORT=" + port);
+                System.out.println("MYSQLDATABASE=" + db);
+                System.out.println("MYSQLUSER=" + user);
+                return null;
+            }
 
-            // Debug logs (optional)
-            System.out.println("JDBC URL: " + URL);
-            System.out.println("USER: " + USER);
+            String URL = "jdbc:mysql://" + host + ":" + port + "/" + db
+                       + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
-            return DriverManager.getConnection(URL, USER, PWD);
-=======
-	        String user = System.getenv("MYSQLUSER");
-	        String pwd  = System.getenv("MYSQLPASSWORD");
+            System.out.println("✅ Connecting to: " + URL);
+            return DriverManager.getConnection(URL, user, pwd);
 
-	        // ✅ FIXED
-	        System.out.println("JDBC URL: " + url);
-	        System.out.println("USER: " + user);
-
-	        Class.forName("com.mysql.cj.jdbc.Driver");
-	        return DriverManager.getConnection(url, user, pwd);
->>>>>>> 891f63d (Fixed DB connection debug)
-
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return null;
-	    }
-	
+        } catch (Exception e) {
+            System.out.println("❌ DB Connection Failed: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
 }
