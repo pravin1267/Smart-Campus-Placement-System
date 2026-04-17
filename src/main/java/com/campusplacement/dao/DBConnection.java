@@ -8,7 +8,7 @@ public class DBConnection {
 	private static final String URL =
 		    "jdbc:mysql://" + System.getenv("MYSQLHOST") + ":" +
 		    System.getenv("MYSQLPORT") + "/" +
-		    System.getenv("MYSQL_DATABASE") +
+		    System.getenv("MYSQLDATABASE") +
 		    "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
 		private static final String USER = System.getenv("MYSQLUSER");
