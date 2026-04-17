@@ -21,7 +21,7 @@ public class UserDAO {
 		   ps.setString(1, username);
 		   ps.setString(2, password);
 		   ResultSet rs = ps.executeQuery();
-		   
+		   System.out.println("login successfull");
 		   while(rs.next()) {
 			   user = new User();
 			   user.setUserId(rs.getInt(1));

@@ -15,7 +15,7 @@ public class DBConnection {
             String user = System.getenv("MYSQLUSER");
             String pwd  = System.getenv("MYSQLPASSWORD");
 
-            // ✅ Add this null check
+            // ✅ Null check
             if (host == null || port == null || db == null || user == null || pwd == null) {
                 System.out.println("❌ ERROR: One or more env variables are NULL!");
                 System.out.println("MYSQLHOST=" + host);
