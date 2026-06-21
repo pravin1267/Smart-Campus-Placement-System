@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
+	
+	
+	private DBConnection() {}
+	
 
     public static Connection getConnection() {
         try {
